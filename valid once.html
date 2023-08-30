@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'nonce-abc123'">
+</head>
+<body>
+    <h1>Sample Page</h1>
+
+    <script nonce="abc123">
+        // สคริปต์ที่รันเมื่อค่า nonce ตรงกับนโยบาย CSP
+        console.log("This script has a valid nonce.");
+    </script>
+</body>
+</html>
