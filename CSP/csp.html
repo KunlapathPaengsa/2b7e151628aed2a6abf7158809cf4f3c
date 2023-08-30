@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-random_nonce_here';">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script nonce="random_nonce_here" src="encryption.js"></script>
+    <script nonce="random_nonce_here">
+        function mainFunction() {
+            console.log('Main function is called.');
+            const originalData = 'Sensitive information';
+            const encryptedData = encryptData(originalData);
+            const decryptedData = decryptData(encryptedData);
+
+            console.log('Original Data:', originalData);
+            console.log('Encrypted Data:', encryptedData);
+            console.log('Decrypted Data:', decryptedData);
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Security Example</h1>
+    <button onclick="mainFunction()">Call Main Function</button>
+</body>
+</html>
