@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script nonce="random_nonce_here">
+        // ระบุคีย์เข้ารหัส (ต้องเป็นคีย์ที่แข็งแกร่ง)
+        const encryptionKey = 'mySecretKey123';
+
+        // ฟังก์ชันเข้ารหัสข้อมูล
+        function encryptData(data) {
+            const encryptedData = CryptoJS.AES.encrypt(data, encryptionKey);
+            return encryptedData.toString();
+        }
+
+        // ฟังก์ชันถอดรหัสข้อมูล
+        function decryptData(encryptedData) {
+            const decryptedData = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
+            return decryptedData.toString(CryptoJS.enc.Utf8);
+        }
+
+        // ตัวอย่างการใช้งาน
+        const originalData = 'Sensitive information';
+        const encryptedData = encryptData(originalData);
+        const decryptedData = decryptData(encryptedData);
+
+        console.log('Original Data:', originalData);
+        console.log('Encrypted Data:', encryptedData);
+        console.log('Decrypted Data:', decryptedData);
+    </script>
+</head>
+<body>
+    <h1>JavaScript Encryption Example</h1>
+</body>
+</html>
