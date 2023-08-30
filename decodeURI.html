@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>URL Decoding Example</title>
+</head>
+
+<body>
+    <script>
+        const originalString = 'Hello, World! This is a test.';
+        const encodedString1 = encodeURIComponent(originalString);
+
+        document.write(`<p>Original String: ${originalString}</p>`);
+        document.write(`<p>Encoded String: ${encodedString1}</p>`);
+
+        const encodedString = 'Hello%2C%20World%21%20This%20is%20a%20test.';
+        const decodedString = decodeURIComponent(encodedString);
+
+        document.write(`<p>Encoded String: ${encodedString}</p>`);
+        document.write(`<p>Decoded String: ${decodedString}</p>`);
+    </script>
+</body>
+
+</html>
