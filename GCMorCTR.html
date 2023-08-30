@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include CryptoJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script nonce="random_nonce_here">
+        // ระบุคีย์เข้ารหัส (ควรเป็นคีย์ที่แข็งแกร่งและปลอดภัย)
+        const encryptionKey = CryptoJS.enc.Hex.parse('2b7e151628aed2a6abf7158809cf4f3c');
+        
+        // ระบุ IV (Initialization Vector) สำหรับแบบ GCM หรือ CTR
+        const iv = CryptoJS.enc.Hex.parse('f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff');
+        
+        // ฟังก์ชันเข้ารหัสข้อมูลแบบ AES-GCM
+        function encryptData(data) {
+            const encryptedData = CryptoJS.AES.encrypt(data, encryptionKey, {
+                iv: iv,
+                mode: CryptoJS.mode.GCM,
+                padding: CryptoJS.pad.NoPadding
+            });
+            return encryptedData.toString();
+        }
+
+        // ฟังก์ชันถอดรหัสข้อมูลแบบ AES-GCM
+        function decryptData(encryptedData) {
+            const decryptedData = CryptoJS.AES.decrypt(encryptedData, encryptionKey, {
+                iv: iv,
+                mode: CryptoJS.mode.GCM,
+                padding: CryptoJS.pad.NoPadding
+            });
+            return decryptedData.toString(CryptoJS.enc.Utf8);
+        }
+
+        // ตัวอย่างการใช้งาน
+        const originalData = 'Sensitive information';
+        const encryptedData = encryptData(originalData);
+        const decryptedData = decryptData(encryptedData);
+
+        console.log('Original Data:', originalData);
+        console.log('Encrypted Data:', encryptedData);
+        console.log('Decrypted Data:', decryptedData);
+    </script>
+</head>
+<body>
+    <h1>AES-GCM Encryption Example</h1>
+</body>
+</html>
